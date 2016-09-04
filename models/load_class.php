@@ -8,7 +8,6 @@ require_once('db.php');
 		$namafile = $class.'.php';
 		include_once $namafile;
 	}
-
 	spl_autoload_register('autoload');//menginclude semua class di folder yang sama
 
 	try {
