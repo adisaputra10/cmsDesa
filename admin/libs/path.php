@@ -1,6 +1,6 @@
 <?php 
 
-	define('root', 'http://localhost/cmsdes/');
-	define('adm', 'http://localhost/cmsdes/admin/');
+	define('root', 'http://localhost/cmsdesa/');
+	define('adm', 'http://localhost/cmsdesa/admin/');
 
 ?>
