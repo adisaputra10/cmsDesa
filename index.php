@@ -14,6 +14,8 @@ echo'
 		<a href="'.root.'register">Register</a>
 		<a href="'.root.'news">Pengumuman</a>
 		<a href="'.root.'potensi">Potensi</a>
+		<a href="'.root.'berita">Berita</a>
+		<a href="'.root.'galeri">Galeri</a>
 		<hr>
 
 ';
@@ -42,6 +44,15 @@ echo'
 		break;
 		case 'vw_potensi':
 			include 'views/vw_potensi.php';
+		break;
+		case 'vw_berita':
+			include 'views/vw_berita.php';
+		break;
+		case 'berita':
+			include 'views/berita.php';
+		break;
+		case 'galeri':
+			include 'views/galeri.php';
 		break;
 
 	}

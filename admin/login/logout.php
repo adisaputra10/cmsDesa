@@ -1,5 +1,5 @@
 <?php
-define('adm','http://localhost/cmsdes/admin/');
+define('adm','http://localhost/cmsdesa/admin/');
 
 	session_start();
 	session_unset();
