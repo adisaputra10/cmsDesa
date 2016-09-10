@@ -7,6 +7,7 @@ foreach ($berita as $a)
 
 		<img src="'.root.'asset/berita/'.$a['foto'].'">
 		<h1>'.$a['title'].'</h1>
+		<p>'.$a['content'].'</p>
 
 	';
 }

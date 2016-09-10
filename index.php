@@ -16,6 +16,7 @@ echo'
 		<a href="'.root.'potensi">Potensi</a>
 		<a href="'.root.'berita">Berita</a>
 		<a href="'.root.'galeri">Galeri</a>
+		<a href="'.root.'dokumen">Dokumen</a>
 		<hr>
 
 ';
@@ -53,6 +54,9 @@ echo'
 		break;
 		case 'galeri':
 			include 'views/galeri.php';
+		break;
+		case 'dokumen':
+			include 'views/dokumen.php';
 		break;
 
 	}

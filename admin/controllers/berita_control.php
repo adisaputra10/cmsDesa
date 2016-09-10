@@ -5,32 +5,26 @@ date_default_timezone_set('Asia/Makassar');
 require('../../models/load_class.php');
 require('../../libs/path.php');
 ob_start();
-
 $model = $_GET['model'];
 $method = $_GET['method'];
 $model;
-if ($model = 'berita' AND $method = 'add')
-{
 
+if($model = 'berita' AND $method = 'add')
+{
 	if(isset($_POST['submit']))
 	{
-		//$id_acak = '1'.date('Hi').mt_rand(100,999);
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 		$foto = "";
-		if ($_FILES['foto']['tmp_name'] != "")
+		if($_FILES['foto']['tmp_name'] !="")
 		{
-			$foto = $libs->uploadImageToFolder('../../asset/berita/', $_FILES['foto']);
+			$foto = $libs->uploadImageToFolder('../../asset/berita',$_FILES['foto']);
 		}
-
 		$berita->addArtikel($title,$content,$foto);
 		header('Location:'.adm.'berita');
-		
 	}
-
-
-	
-	if ($model = 'berita' AND $method = 'edit')
+}
+if ($model = 'berita' AND $method = 'edit')
 	{
 
 		if(isset($_POST['edit']))
@@ -54,9 +48,9 @@ if ($model = 'berita' AND $method = 'add')
 		
 		
 	}
-
-	if ($model = 'berita' AND $method = 'delete') 
-	{
+if ($model = 'berita' AND $method = 'delete')
+{
+	
 		//echo "<br><br>work here" ;
 			
 			$id = $_GET['id'];
@@ -66,9 +60,5 @@ if ($model = 'berita' AND $method = 'add')
 			$libs->deleteFile("../../assets/berita/", $data['foto']);
 			$berita->delete_artikel($id);
 			header("location:".adm."berita");
-	}
 	
-
-
 }
-?>

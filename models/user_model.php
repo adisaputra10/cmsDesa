@@ -72,6 +72,26 @@ class user_model
 				die($e->getMessage());
 			}
 		}
+		public function add_user($user,$password,$name,$level)
+		{
+			echo 'still work';
+			$query = $this->db->prepare("INSERT INTO `user` (`user`,`password`,`name`,`level`) VALUES (?,?,?,?)");
+
+			$query->bindValue(1, $user);
+			$query->bindValue(2, $password);
+			$query->bindValue(3, $name);
+			$query->bindValue(4, $level);
+		
+			try
+			{
+				$query->execute();
+			}
+			catch(PDOexception $e)
+			{
+				echo $e;
+			}
+				
+		}
 }
 
 ?>

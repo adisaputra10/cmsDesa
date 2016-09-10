@@ -13,7 +13,7 @@
 
 		public function getArticle()
 		{
-			$query = $this->db->prepare("SELECT * FROM artikel");
+			$query = $this->db->prepare("SELECT * FROM `artikel`");
 
 			try {
 				$query->execute();

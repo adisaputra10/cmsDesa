@@ -1,4 +1,5 @@
 <?php
+//if(isset())
 echo '<ol>';
 $galeri = $galeri->getGaleri();
 
@@ -19,7 +20,7 @@ foreach ($galeri as $a)
 	}
 	else if ($extension == 'mp4' or $extension == 'mkv')
 	{
-		echo'video';
+		//echo'video';
 		echo'
 			<video width="320" height="240" controls>
  			 <source src="'.root.'asset/galeri/'.$a['media'].'" type="video/mp4">

@@ -51,7 +51,7 @@ require('../../libs/routers.php');
 					$pass 	  = filter_var($pas,FILTER_SANITIZE_MAGIC_QUOTES);
 
 					$data = $user->getUserByUserName($username);
-
+					$pass = md5($pass);
 					$count = 0;
 					if ($pass == $data['password']) 
 					{

@@ -18,6 +18,8 @@
  						<a href="'.adm.'pengumuman">Pengumuman</a>
  						<a href="'.adm.'potensi">Potensi</a>
  						<a href="'.adm.'berita">Berita</a>
+ 						<a href="'.adm.'galeri">Galeri</a>
+ 						<a href="'.adm.'dokumen">Dokumen</a>
  						';
  						if ($_SESSION['level'] == 'admin')
  						{
@@ -54,6 +56,12 @@
  							break;
  							case 'berita':
  								include 'views/berita_vw.php';
+ 							break;
+ 							case 'galeri':
+ 								include 'views/galeri_vw.php';
+ 							break;
+ 							case 'dokumen':
+ 								include 'views/dokumen_vw.php';
  							break;
  
  

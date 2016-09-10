@@ -3,7 +3,7 @@
 	/**
 	* ini adalah kumpulan fungsi untuk artiker
 	*/
-	class galeri_model
+	class dokumen_model
 	{
 		private $db;
 		function __construct($database)
@@ -11,9 +11,9 @@
 			$this->db=$database;
 		}
 
-		public function getGaleri()
+		public function getDokumen()
 		{
-			$query = $this->db->prepare("SELECT * FROM galeri");
+			$query = $this->db->prepare("SELECT * FROM `dokumen`");
 
 			try {
 				$query->execute();
@@ -24,9 +24,9 @@
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		public function getGaleriById($id)
+		public function getDokumenById($id)
 		{
-			$query = $this->db->prepare("SELECT * FROM `galeri` WHERE id=:id");
+			$query = $this->db->prepare("SELECT * FROM `dokumen` WHERE id=:id");
 			$query->bindParam(':id', $id);
 			try {
 							$query->execute();
@@ -35,13 +35,11 @@
 						}			
 						return $query->fetchAll(PDO::FETCH_ASSOC);
 		}
-		public function addGaleri($title,$media,$deskripsi)
+		public function addDokumen($title,$deskripsi,$file)
 		{
-			$query = $this->db->prepare("INSERT INTO `galeri` (`title`,`media`,`deskripsi`) VALUES (?,?,?)");
-			$query->bindValue(1,$title);
-			$query->bindValue(2,$media);
-			$query->bindValue(3,$deskripsi);
-					
+			$query = $this->db->prepare("INSERT INTO `dokumen` (title,content,file) VALUES ('$title','$deskripsi','$file')");
+
+			
 			try
 			{
 				$query->execute();
@@ -52,9 +50,9 @@
 			}
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}
-		public function delete_galeri($id)
+		public function delete_dokumen($id)
 		{
-			$query = $this->db->prepare("DELETE FROM `galeri` WHERE `id` = ?");
+			$query = $this->db->prepare("DELETE FROM `dokumen` WHERE `id` = ?");
 			
 			$query->bindValue(1, $id);
 			
@@ -68,16 +66,16 @@
 			}
 			
 		}
-		public function update_galeri($id,$title,$media,$deskripsi)
+		public function update_dokumen($id,$title,$content,$doc)
 		{
-			$query = $this->db->prepare("UPDATE `galeri` SET `title` = :title,
-								`media` = :media,
-								`deskripsi`	= :deskripsi,
+			$query = $this->db->prepare("UPDATE `dokumen` SET `title` = :title,
+								`content` = :content,
+								`file`	= :file,
 								`id`   =:id");
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
-			$query->bindParam(':media',$media,PDO::PARAM_STR);
-			$query->bindParam(':deskripsi',$deskripsi,PDO::PARAM_STR);
+			$query->bindParam(':content',$content,PDO::PARAM_STR);
+			$query->bindParam(':file',$doc,PDO::PARAM_STR);
 
 			try
 			{
