@@ -36,8 +36,7 @@ require('../../libs/routers.php');
 			include ('../views/login.php');
 			break;
 	}
-	echo'
-		<a href="'.root.'register">Register</a>	';
+	
 			if (isset($_POST['submit'])) 
 		{
 			

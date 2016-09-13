@@ -1,17 +1,15 @@
 <?php
-
-echo'
+echo '
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Sign-Up/Login Form</title>
-    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600" rel="stylesheet" type="text/css">
+    <title>Simple HTML & CSS Login Form</title>
     
-    <link rel="stylesheet" href="'.adm.'assets/css/normalize.css">
-
     
-        <link rel="stylesheet" href="'.adm.'/assets/css/style.css">
+    
+    
+        <link rel="stylesheet" href="'.root.'asset/csslog/style.css">
 
     
     
@@ -20,53 +18,35 @@ echo'
 
   <body>
 
-    <div class="form">
-      
-      <ul class="tab-group">
-        
-      </ul>
-      
-      <div class="tab-content">
-        <div id="signup">   
-          <h1>Welcome Back!</h1>
-          
-         <form action="" method="POST">
-            <div class="field-wrap">
-            <label>
-              <span class="req"></span>
-            </label>
-           <input type="text" name="user" placeholder="User" id="user">
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              
-            </label>
-            <input type="password" name="password" placeholder="password" id="pass">
-          </div>
-          
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-           <p class="forgot"><a href="'.root.'register">Register</a></p>
-          
-          <button class="button button-block"/><input type="submit" name="submit" value="Login" ></button>
-          
-          </form>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700,600" rel="stylesheet" type="text/css">
 
+<form method="post" action="">
+<div class="box">
+<h1>Dashboard</h1>
 
-       
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<input type="text" name="user" placeholder="User" onFocus="field_focus(this, "email");" onblur="field_blur(this, "email");" class="email" />
+  
+<input type="password" name="password" placeholder="Password" onFocus="field_focus(this, "email");" onblur="field_blur(this, "email");" class="email" />
+  
+<input class="btn" type="submit" name="submit" value="Login"> <!-- End Btn -->
 
-        <script src="'.adm.'assets/js/index.js"></script>
+<a href="'.root.'register"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
+  
+</div> <!-- End Box -->
+  
+</form>
+
+<p>Forgot your password? <u style="color:#f1c40f;">Click Here!</u></p>
+  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    
+        <script src="'.root.'asset/jslog/index.js"></script>
 
     
     
     
   </body>
 </html>
+
 ';
 ?>
-
