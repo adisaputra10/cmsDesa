@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2017 at 02:25 AM
+-- Generation Time: Sep 29, 2016 at 06:27 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -101,7 +101,6 @@ CREATE TABLE `pengumuman` (
 
 INSERT INTO `pengumuman` (`id`, `title`, `content`, `foto`) VALUES
 (33, 'Edit kodong', 'as', '12039311.jpg'),
-(12200139, 'Tes', 'asas', '12200139.jpg'),
 (12313450, 'Edit', '<font face="Arial, Verdana"><span style="font-size: 13.3333px;">Israel punya 200 senjata nuklir mengarah ke Iran</span></font>', '12314971.png');
 
 -- --------------------------------------------------------
@@ -139,6 +138,14 @@ CREATE TABLE `user` (
   `id_session` varchar(11) NOT NULL,
   `level` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `user`, `password`, `hitman`, `id_session`, `level`) VALUES
+(2, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'orj5n33cu9p', 'admin'),
+(18, 'Nurmar''atu Thahirah', 'nanang', 'cc8839950896aa17b3224887089241ba', 'nanang', '2dlub3gvhut', 'user');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +215,7 @@ ALTER TABLE `potensi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
