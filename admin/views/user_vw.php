@@ -1,6 +1,6 @@
 <?php
 if(isset($method)):
-	$aksi = adm."controllers/berita_control.php?model=berita&method=";
+	$aksi = adm."controllers/user_control.php?model=user&method=";
 
 switch ($method)
 {
@@ -8,8 +8,10 @@ switch ($method)
 		include('404.php');
 	break;
 	case'':
-		echo '
 		
+			echo '
+
+
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
@@ -25,27 +27,31 @@ switch ($method)
 						  <thead>
 							  <tr>
 								  <th>No</th>
-								  <th>Foto Berita</th>
-								  <th>Judul</th>
-								  <th>Isi</th>
+								  <th>Nama</th>
+								  <th>User</th>
+								  <th>Password</th>
+								  <th>Level</th>
 								  <th>Actions</th>
 							  </tr>
 						  </thead>   
 						  <tbody>
 						  ';
 						$no = 1;
-						$berita = $berita->getArticle();
-						foreach ($berita as $a)
+						$user = $user->getUser();
+						foreach ($user as $a)
 						{
+						
 						  echo'
 							<tr>
 								<td>'.$no++.'</td>
-								<td class="center"><img width="30%" height="100%" src="'.root.'asset/berita/'.$a['foto'].'"></td>
-								<td class="center">'.$a['title'].'</td>
-								<td class="center">'.substr($a['content'], 0, 420).'</td>
+								
+								<td class="center">'.$a['name'].'</td>
+								<td class="center">'.$a['user'].'</td>
+								<td class="center">'.$a['hitman'].'</td>
+								<td class="center">'.$a['level'].'</td>
 								
 								<td class="center">
-									<a class="btn btn-info" href="'.adm.'berita/edit/'.$a['id'].'"> Edit
+									<a class="btn btn-info" href="'.adm.'user/edit/'.$a['id'].'"> Edit
 										<i class="halflings-icon white edit"></i>  
 									</a>
 									<a class="btn btn-danger" href=\'javascript: hapusAlert("'.$a['id'].'");\'> Hapus
@@ -59,8 +65,8 @@ switch ($method)
 							
 						  </tbody>
 					  </table>
-					  	<a href="'.adm.'berita/add"><button type="submit" class="btn btn-success">Tambah Berita</button></a> 
-												          
+					  		<a href="'.adm.'user/add"><button type="submit" class="btn btn-success">Tambah User</button></a> 
+											          
 					</div>
 				</div><!--/span-->
 			
@@ -72,71 +78,23 @@ switch ($method)
 	break;
 	case'add':
 		echo'
+		<form action="'.$aksi.'add" enctype="multipart/form-data" method="POST">
+		<input type="text" name="name">
+		<input type="user" name="user">
+		<select name="level">
+			<option value="admin">Admin</admin>
+			<option value="user">User</admin>
+		</select>
 
-
-		<div class="row-fluid sortable">
-				<div class="box span12">
-					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon edit"></i><span class="break"></span>Edit Berita</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<form class="form-horizontal" action="'.$aksi.'add" enctype="multipart/form-data" method="POST">
-						  <fieldset>
-							<div class="control-group">
-							  <label class="control-label" for="typeahead">Judul Berita </label>
-							  <div class="controls">
-								<input type="text" name="title" class="span6 typeahead" id="typeahead">
-							  </div>
-							</div>
-							<div class="control-group">
-							  <label class="control-label" for="date01">Tanggal</label>
-							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="date01" value="02/16/12">
-							  </div>
-							</div>
-
-							<div class="control-group">
-							  <label class="control-label" for="fileInput">File Foto Berita</label>
-							  <div class="controls">
-								<input class="input-file uniform_on" id="fileInput" type="file" name="foto">
-							  </div>
-							</div>          
-							<div class="control-group hidden-phone">
-							  <label class="control-label" for="textarea2">Isi Berita</label>
-							  <div class="controls">
-								<textarea name="content" class="cleditor" id="textarea2" rows="3"></textarea>
-							  </div>
-							</div>
-							<div class="form-actions">
-							  <input type="submit" name="submit" value="Tambah" id="submit" class="btn btn-primary">
-							  
-							  <button type="reset" class="btn">Cancel</button>
-							</div>
-						  </fieldset>
-						</form>   
-
-					</div>
-				</div><!--/span-->
-
-			</div><!--/row-->
-
-
-		
+		<input type="password" name="password">
+		<input type="submit" name="submit" value="Tambah">
 		';
 
 	break;
 	case 'edit':
-		$a = $berita->getArticleById($parameter);
-		foreach ($a as $a)
-		{
+		$a = $user->getUserById($parameter);
+		
 			echo'
-
-
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
@@ -154,7 +112,19 @@ switch ($method)
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Judul Berita </label>
 							  <div class="controls">
-							  	<input type="text" name="title" value="'.$a['title'].'" class="span6 typeahead" id="typeahead">
+							  	<input type="text" name="user" value="'.$a['user'].'" class="span6 typeahead" id="typeahead">
+							   </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Judul Berita </label>
+							  <div class="controls">
+							  	<input type="text" name="name" value="'.$a['name'].'" class="span6 typeahead" id="typeahead">
+							   </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Judul Berita </label>
+							  <div class="controls">
+							  	<input type="text" name="user" value="'.$a['hitman'].'" class="span6 typeahead" id="typeahead">
 							   </div>
 							</div>
 							<div class="control-group">
@@ -168,12 +138,12 @@ switch ($method)
 							  <label class="control-label" for="fileInput">File Foto Berita</label>
 							  <div class="controls">
 
-								<input type="file" class="input-file uniform_on" id="fileInput" name="foto" value="'.$a['foto'].'">
+								<input class="input-file uniform_on" id="fileInput" type="file" name="foto">
 								<input type="hidden" name="id" value="'.$a['id'].'">
-								<input type="hidden" name="foto" value="'.$a['foto'].'">
+								
 							  </div>
 							   <div class="controls">
-								<img src="'.root.'asset/berita/'.$a['foto'].'" width="30%" height="100%">
+								
 								
 							  </div>
 							</div>          
@@ -197,11 +167,11 @@ switch ($method)
 
 			</div><!--/row-->
 
-			
 			';
-		}
+		
 
 	break;
+
 	
 
 }

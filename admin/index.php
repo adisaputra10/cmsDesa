@@ -135,7 +135,7 @@
 						
 						echo'
 												
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -176,7 +176,7 @@
  							case 'user':
  								if($_SESSION['level'] == 'admin')
  								{
- 									include 'views/user.php';
+ 									include 'views/user_vw.php';
  								}
  								else
  								{

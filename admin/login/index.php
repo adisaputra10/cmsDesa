@@ -66,7 +66,7 @@ require('../../libs/routers.php');
 							$_SESSION['level'] = $data['level'];
 							$_SESSION['login'] = 1;
 
-
+							$libs->timer();
 							$sid_lama = session_id();
 							session_regenerate_id();
 							$sid_baru = session_id();

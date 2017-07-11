@@ -72,15 +72,16 @@ class user_model
 				die($e->getMessage());
 			}
 		}
-		public function add_user($user,$password,$name,$level)
+		public function add_user($user,$password,$hitman,$name,$level)
 		{
 			echo 'still work';
-			$query = $this->db->prepare("INSERT INTO `user` (`user`,`password`,`name`,`level`) VALUES (?,?,?,?)");
+			$query = $this->db->prepare("INSERT INTO `user` (`user`,`password`,`hitman`,`name`,`level`) VALUES (?,?,?,?,?)");
 
 			$query->bindValue(1, $user);
 			$query->bindValue(2, $password);
-			$query->bindValue(3, $name);
-			$query->bindValue(4, $level);
+			$query->bindValue(3, $hitman);
+			$query->bindValue(4, $name);
+			$query->bindValue(5, $level);
 		
 			try
 			{
@@ -91,6 +92,22 @@ class user_model
 				echo $e;
 			}
 				
+		}
+		public function delete_user($id)
+		{
+			$query = $this->db->prepare("DELETE FROM `user` WHERE `id` = ?");
+			
+			$query->bindValue(1, $id);
+			
+			try
+			{
+				$query->execute();
+			}
+			catch(PDOException $e)
+			{
+				die($e->getMessage());
+			}
+			
 		}
 }
 

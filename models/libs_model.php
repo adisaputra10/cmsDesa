@@ -295,56 +295,6 @@
 				return false;
 			}
 		}
-		public function uploadDocumentToFolder($folder,$file)
-		{
-			$tmp_name = $file['tmp_name'];
-			$ext = explode('.',$file['name'] );
-			$extension = $ext[sizeof($ext)-1];
-			$extension = strtolower($extension);
-			$namaberu = uniqid().'.'.$extension;
-			$name = $folder.$namaberu;
-
-			$size = ceil($file['size']/1024);
-			if($extension == 'doc' or $extension == 'pdf' or $extension == 'docx' or $extension == 'ppt' or $extension == 'DOC' or $extension == 'DOCX') {
-					if(move_uploaded_file($tmp_name, $name)) {
-						return $namaberu;
-					} else {
-						return '';
-					}; //fungsi untuk memindahkan gambar 
-				} else {
-					return '';
-				}
-
-		}
-
-		public function uploadMediaToFolder($folder, $file) {
-			//kode untuk upload ke folder gambar 
-			$tmp_name = $file["tmp_name"];
-			$ext = explode('.',$file['name']);
-			$extension = $ext[sizeof($ext)-1];
-			$extension = strtolower($extension);
-			$namaberu = uniqid().'.'.$extension;
-			$name = $folder.$namaberu;
-			
-			//fungsi cut dari temp file ke yang kita mau
-			$size = ceil($file['size']*50026); // disini misalkan tidak ada file maka akan 0
-			@$cek =  empty($file)?array():getimagesize($file['tmp_name']);
-			// var_dump($cek);
-
-			if(!empty($cek['mime']) and $size <= 50026) { 
-				if($extension == 'png' or $extension == 'jpg' or $extension == 'jpeg' or $extension == 'JPEG' or $extension == 'JPG' or $extension == 'PNG' or $extension == 'MKV' or $extension == 'MP4' or $extension == 'avi' or $extension == 'mpeg' or $extension == 'wmv') {
-					if(move_uploaded_file($tmp_name, $name)) {
-						return $namaberu;
-					} else {
-						return '';
-					}; //fungsi untuk memindahkan gambar 
-				} else {
-					return '';
-				}
-			} else {
-				return false;
-			}
-		}
 
 	}
 ?>

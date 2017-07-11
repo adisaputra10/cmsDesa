@@ -31,6 +31,7 @@ echo '
 <input class="btn" type="submit" name="submit" value="Login"> <!-- End Btn -->
 
 <a href="'.root.'register"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
+
   
 </div> <!-- End Box -->
   

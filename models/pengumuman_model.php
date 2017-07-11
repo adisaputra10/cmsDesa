@@ -13,7 +13,7 @@
 
 		public function getPengumuman()
 		{
-			$query = $this->db->prepare("SELECT * FROM pengumuman");
+			$query = $this->db->prepare("SELECT * FROM `pengumuman`");
 
 			try {
 				$query->execute();
@@ -35,9 +35,9 @@
 						}			
 						return $query->fetchAll(PDO::FETCH_ASSOC);
 		}
-		public function addPengumuman($title,$content,$foto)
+		public function addPengumuman($id,$title,$content,$foto)
 		{
-			$query = $this->db->prepare("INSERT INTO `pengumuman` (title,content,foto) VALUES ('$title','$content','$foto')");
+			$query = $this->db->prepare("INSERT INTO `pengumuman` (id,title,content,foto) VALUES ($id,'$title','$content','$foto')");
 
 			
 			try
@@ -70,8 +70,8 @@
 		{
 			$query = $this->db->prepare("UPDATE `pengumuman` SET `title` = :title,
 								`content` = :content,
-								`foto`	= :foto,
-								`id`   =:id");
+								`foto`	= :foto 
+								WHERE `id`   =:id");
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':content',$content,PDO::PARAM_STR);

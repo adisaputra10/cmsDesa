@@ -42,11 +42,14 @@ echo '
 			
 			
 			<div class="row-fluid">	
+			';
 
+			$user = $user->getUser();
+			echo'
 				<a class="quick-button metro yellow span2">
 					<i class="icon-group"></i>
 					<p>Users</p>
-					<span class="badge">237</span>
+					<span class="badge">'.count($user).'</span>
 				</a>
 				<a class="quick-button metro red span2">
 					<i class="icon-comments-alt"></i>

@@ -14,12 +14,12 @@ $model;
 
 		if(isset($_POST['submit']))
 		{
-		//$id_acak = '1'.date('Hi').mt_rand(100,999);
+			$id_acak = '1'.date('Hi').mt_rand(100,999);
 			$title = $_POST['title'];
 			$media = "";
 			if ($_FILES['media']['tmp_name'] != "")
 			{
-				$media = $libs->uploadImageToFolder('../../asset/galeri/', $_FILES['media']);
+				$media = $libs->uploadFile('../../asset/galeri/', $_FILES['media'],$id_acak);
 			}
 			$deskripsi = $_POST['deskripsi'];
 			$galeri->addGaleri($title,$media,$deskripsi);

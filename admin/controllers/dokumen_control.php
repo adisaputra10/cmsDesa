@@ -20,7 +20,7 @@ if ($model = 'dokumen' AND $method = 'add')
 		$file = "";
 		if($_FILES['file_doc']['tmp_name'] != "")
 		{
-			$file = $libs->uploadDocumentToFolder('../../asset/dokumen/',$_FILES['file_doc']);
+			$file = $libs->uploadDocumentToFolder('../../asset/dokumen/',$_FILES['file_doc'],$title);
 		}
 		
 		$dokumen->addDokumen($title,$deskripsi,$file);
@@ -41,7 +41,7 @@ if ($model = 'dokumen' AND $method = 'edit')
 			if ($_FILES['file_doc']['tmp_name'] != "")
 			{
 				$libs->deleteFile('../../asset/dokumen/',$doc);
-				$doc = $libs->uploadFile('../../asset/dokumen/', $_FILES['file_doc'],$id_acak);
+				$doc = $libs->uploadFile('../../asset/dokumen/', $_FILES['file_doc'],$title);
 			}
 
 			$dokumen->update_dokumen($id,$title,$content,$doc);

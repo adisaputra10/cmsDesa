@@ -17,7 +17,7 @@ require_once('db.php');
 		$pengumuman = new pengumuman_model($db);
 		$libs = new libs_model($db);
 		$potensi = new potensi_model($db);
-		$berita = new artikel_model($db);
+		$berita = new berita_model($db);
 		$galeri = new galeri_model($db);
 		$dokumen = new dokumen_model($db);
 	} catch (Exception $e) {

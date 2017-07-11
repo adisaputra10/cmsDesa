@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+if(isset($_GET['model'])):
 date_default_timezone_set('Asia/Makassar');
 require('../../models/load_class.php');
 require('../../libs/path.php');
@@ -9,7 +10,7 @@ ob_start();
 $model = $_GET['model'];
 $method = $_GET['method'];
 $model;
-if ($model = 'potensi' AND $method = 'add')
+if ($model = 'pengumuman' AND $method = 'add')
 {
 
 	if(isset($_POST['submit']))
@@ -20,16 +21,16 @@ if ($model = 'potensi' AND $method = 'add')
 		$foto = "";
 		if ($_FILES['foto']['tmp_name'] != "")
 		{
-			$foto = $libs->uploadFile('../../asset/potensi/', $_FILES['foto'],$id_acak);
+			$foto = $libs->uploadFile('../../asset/pengumuman/',$_FILES['foto'],$id_acak);
 		}
 
-		$potensi->add_potensi($title,$content,$foto);
-		header('Location:'.adm.'potensi');
+		$pengumuman->addPengumuman($id_acak,$title,$content,$foto);
+		header('Location:'.adm.'pengumuman');
 		
 	}
 
 
-	if ($model = 'potensi' AND $method = 'edit')
+	if ($model = 'pengumuman' AND $method = 'edit')
 	{
 
 		if(isset($_POST['edit']))
@@ -42,32 +43,32 @@ if ($model = 'potensi' AND $method = 'add')
 			$foto = $_POST['foto'];
 			if ($_FILES['foto']['tmp_name'] != "")
 			{
-				$libs->deleteFile('../../asset/potensi/',$foto);
-				$foto = $libs->uploadFile('../../asset/potensi/', $_FILES['foto'],$id_acak);
+				$libs->deleteFile('../../asset/pengumuman/',$foto);
+				$foto = $libs->uploadFile('../../asset/pengumuman/',$_FILES['foto'],$id_acak);
 			}
 
-			$potensi->update_potensi($id,$title,$content,$foto);
-			header('Location:'.adm.'potensi');
+			$pengumuman->update_pengumuman($id,$title,$content,$foto);
+			header('Location:'.adm.'pengumuman');
 			
 		}
 		
 		
 	}
 
-	if ($model = 'potensi' AND $method = 'delete') 
+	if ($model = 'pengumuman' AND $method = 'delete') 
 	{
 		//echo "<br><br>work here" ;
-			
 			$id = $_GET['id'];
-			
-			$data = $potensi->getPotensiById($id);
+			$data = $pengumuman->getPengumumanById($id);
 			//echo "<br><br>work here" ;
 			$libs->deleteFile("../../assets/images/", $data['foto']);
-			$potensi->delete_potensi($id);
-			header("location:".adm."potensi");
+			$pengumuman->delete_pengumuman($id);
+			header("location:".adm."pengumuman");
 	}
 	
 
 
 }
+
+endif;
 ?>

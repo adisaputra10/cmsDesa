@@ -70,8 +70,8 @@
 		{
 			$query = $this->db->prepare("UPDATE `dokumen` SET `title` = :title,
 								`content` = :content,
-								`file`	= :file,
-								`id`   =:id");
+								`file`	= :file
+								WHERE `id`   =:id");
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':content',$content,PDO::PARAM_STR);

@@ -72,8 +72,8 @@
 		{
 			$query = $this->db->prepare("UPDATE `galeri` SET `title` = :title,
 								`media` = :media,
-								`deskripsi`	= :deskripsi,
-								`id`   =:id");
+								`deskripsi`	= :deskripsi
+								WHERE `id`   =:id");
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':media',$media,PDO::PARAM_STR);

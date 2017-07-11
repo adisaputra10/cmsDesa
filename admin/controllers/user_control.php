@@ -1,14 +1,16 @@
 <?php
 
 	session_start();
-	require('../models/load_class.php');
-	require ('../libs/path.php');
+	require('../../models/load_class.php');
+	require ('../../libs/path.php');
 	ob_start();
 		
-	
-	
-		//echo 'work';
-		if (isset($_POST['submit'])) 
+	$method = $_GET['method'];
+	$model = $_GET['model'];
+	$model;
+	if ($model = 'user' AND $method = 'add')
+	{	//echo 'work';
+			if (isset($_POST['submit'])) 
 		{
 			
 			$user = $_POST['user'];
@@ -34,28 +36,32 @@
 				if ($passs != "")
 				{
 				
-				$adduser = $regist->add_user($user,$passs,$name,$level);
+				$adduser = $regist->add_user($user,$passs,$pass,$name,$level);
 				header("location:".adm."login");
 				echo 'Acount created';
 				}
 				else
 				{
 
-					header("location:".root."views/register");
+					header("location:".adm."user");
 				}
 								
 			
 			}
-			header("location:".root."views/register");
+			header("location:".adm."user");
 		}
 	
-	/*if ($model = 'news' AND $method = 'delete')
+	if ($model = 'user' AND $method = 'delete')
 	{
-		$id = filter_var($_GET['id'],FILTER_VALIDATE_INT);
-		$data = $artikel->getArtikelById($id);
-		$artikel->delete_artikel($id);
-		//header("location:".adm."jejak?act=del");
-		header("location:".adm);
-	}*/
+			$id = $_GET['id'];
+			
+			$data = $user->getUserById($id);
+			//echo "<br><br>work here" ;
+			//$libs->deleteFile("../../assets/berita/", $data['file']);
+			$user->delete_user($id);
+			header("location:".adm."user");
+	}
+	
 
+	}
 	?>
