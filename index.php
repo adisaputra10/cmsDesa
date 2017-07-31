@@ -2,24 +2,8 @@
 require('libs/routers.php');
 include('libs/path.php');
 require('models/load_class.php');
+include('views/component/header.php');
 
-echo'
-	<html>
-		<head>
-			<title>CMS Desa</title>
-		</head>
-	
-	<body>
-		<a href="'.root.'">Home</a>
-		<a href="'.root.'register">Register</a>
-		<a href="'.root.'news">Pengumuman</a>
-		<a href="'.root.'potensi">Potensi</a>
-		<a href="'.root.'berita">Berita</a>
-		<a href="'.root.'galeri">Galeri</a>
-		<a href="'.root.'dokumen">Dokumen</a>
-		<hr>
-
-';
 	switch($model)
 	{
 		default:
@@ -60,5 +44,6 @@ echo'
 		break;
 
 	}
+	include 'views/component/footer.php';
 ?>
 
